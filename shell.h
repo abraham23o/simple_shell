@@ -7,10 +7,8 @@
 #include <stdio.h>
 #include <sys/wait.h>
 
-#define MAX_SIZE_INPUT 1024
-#define MAX_ARGS 64
-
-void parse_cmd(char *str, char **args);
-void exec_command(char *argv[]);
-
+void my_print(const char *str);
+void user_prompt(void);
+void read_args(char *args, size_t size);
+void exec_command(const char *command);
 #endif

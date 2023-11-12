@@ -5,7 +5,7 @@
  * @command: command to be executed
  * Return: nothing
  */
-void exec_command(char *argv[])
+void exec_command(const char *command)
 {
 	pid_t child_pid = fork();
 
@@ -16,11 +16,9 @@ void exec_command(char *argv[])
 	}
 	else if (child_pid == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
-		{
-			perror(argv[0]);
-			exit(EXIT_FAILURE);
-		}
+		execlp(command, command, (char *)NULL);
+		perror("Error!");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
