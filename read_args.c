@@ -10,14 +10,15 @@ void read_args(char *args, size_t size)
 {
 	if (fgets(args, size, stdin) == NULL)
 	{
-		if (feof(stdin))
-		{
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			exit(EXIT_FAILURE);
-		}
+		my_print("\n");
+		exit(EXIT_SUCCESS);
 	}
+
 	args[strcspn(args, "\n")] = '\0';
+
+	if (strcmp(args, "exit") == 0)
+	{
+		my_print("exit\n");
+		exit(EXIT_SUCCESS);
+	}
 }
